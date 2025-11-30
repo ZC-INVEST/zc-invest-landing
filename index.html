@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZC INVEST LTD – Smart Financial Advisory</title>
+    <style>
+        :root {
+            --primary: #0b1b3b;
+            --secondary: #caa361;
+            --bg: #f4f5f9;
+            --text: #1f2933;
+            --muted: #6b7280;
+            --radius-lg: 18px;
+            --shadow-soft: 0 14px 45px rgba(15, 23, 42, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                sans-serif;
+            background: radial-gradient(circle at top left, #182a4d 0, #020617 40%, #020617 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px 40px;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 12px 18px;
+            margin-bottom: 28px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            backdrop-filter: blur(14px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: radial-gradient(circle at 30% 20%, #facc15, #b45309);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 0.08em;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 0.18em;
+        }
+
+        .brand-tagline {
+            font-size: 11px;
+            color: #e5e7eb;
+            opacity: 0.9;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            font-size: 13px;
+            align-items: center;
+        }
+
+        nav a {
+            color: #e5e7eb;
+            text-decoration: none;
+            opacity: 0.85;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        .nav-pill {
+            padding: 6px 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            font-size: 12px;
+        }
+
+        .nav-pill span {
+            color: #cbd5f5;
+        }
+
+        /* HERO */
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.7fr);
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .hero-left {
+            padding: 26px;
+            border-radius: 24px;
+            background: radial-gradient(circle at top left, #1d2a4a, #020617);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+        }
+
+        .hero-badge {
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.5);
+            color: #e5e7eb;
+            margin-bottom: 14px;
+        }
+
+        .hero-badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #22c55e;
+            box-shadow: 0 0 10px rgba(34, 197, 94, 0.7);
+        }
+
+        .hero-title {
+            font-size: clamp(24px, 4vw, 34px);
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .hero-title span {
+            color: var(--secondary);
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            color: #e5e7eb;
+            opacity: 0.9;
+            margin-bottom: 18px;
+        }
+
+        .hero-subtitle-small {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 20px;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            border-radius: 999px;
+            padding: 9px 18px;
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #facc15, #b45309);
+            color: #111827;
+            box-shadow: 0 10px 25px rgba(234, 179, 8, 0.35);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #e5e7eb;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-outline:hover {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .hero-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-meta-dot {
+            width: 6px;
+            height: 6px;
+        }
+
+        /* RIGHT CARD */
+
+        .hero-right {
+            padding: 22px;
+            border-radius: 24px;
+            background: radial-gradient(circle at top right, #111827, #020617);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.65);
+        }
+
+        .hero-right-title {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.22em;
+            color: #e5e7eb;
+            margin-bottom: 10px;
+        }
+
+        .pricing-note {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        .hero-highlight {
+            display: grid;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+
+        .hero-highlight strong {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .hero-contact {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(148, 163, 184, 0.6);
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+        .hero-contact span {
+            color: #e5e7eb;
+            font-weight: 500;
+        }
+
+        /* SERVICES SECTION */
+
+        section {
+            margin-top: 34px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 18px;
+        }
+
+        .section-title span {
+            color: var(--secondary);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border-radius: var(--radius-lg);
+            padding: 18px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+        }
+
+        .card-header-tag {
+            font-size: 11px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .card-subtitle {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-bottom: 10px;
+        }
+
+        .card-price {
+            font-size: 13px;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .card-list {
+            list-style: none;
+            font-size: 12px;
+            color: #e5e7eb;
+            margin-bottom: 10px;
+        }
+
+        .card-list li {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+
+        .card-list-bullet {
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            margin-top: 3px;
+        }
+
+        .card-footer-note {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 6px;
+        }
+
+        .card-actions {
+            margin-top: 10px;
+            display: flex;
+            gap: 8px;
+        }
+
+        /* CONTACT FORM */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+            gap: 18px;
+            margin-top: 16px;
+        }
+
+        .contact-card {
+            border-radius: var(--radius-lg);
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            padding: 18px;
+            font-size: 12px;
+        }
+
+        .form-row {
+            display: grid;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-size: 11px;
+            color: #cbd5f5;
+            margin-bottom: 3px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 7px 9px;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.6);
+            background: rgba(15, 23, 42, 0.85);
+            color: #e5e7eb;
+            font-size: 12px;
+        }
+
+        textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+
+        footer {
+            margin-top: 26px;
+            font-size: 11px;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        footer span {
+            color: #e5e7eb;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="brand">
+                <div class="brand-logo">ZC</div>
+                <div class="brand-text">
+                    <span class="brand-name">ZC INVEST LTD</span>
+                    <span class="brand-tagline">Smart Financial Advisory & Fintech Strategy</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#about" class="nav-pill">
+                    <span>Registered in England &amp; Wales</span>
+                </a>
+            </nav>
+        </header>
+
+        <!-- HERO -->
+
+        <section class="hero">
+            <div class="hero-left">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    High-impact financial advisory for SMEs & fintechs
+                </div>
+                <h1 class="hero-title">
+                    Audit your <span>banking costs</span> & secure your
+                    <span>cash-flow</span> – in 72 hours.
+                </h1>
+                <p class="hero-subtitle">
+                    ZC INVEST LTD supports African & international SMEs with
+                    Big Four-style financial insights – at a fraction of the cost.
+                </p>
+                <p class="hero-subtitle-small">
+                    Based in London. Serving Africa, MENA & international markets.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">
+                        Book a free 20-minute call →
+                    </a>
+                    <a href="#services" class="btn btn-outline">
+                        View services & pricing
+                    </a>
+                </div>
+
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <div class="hero-meta-dot"></div>
+                        Bank fee audit aligned with local regulations (e.g. BCT caps)
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="hero-meta-dot"></div>
+                        SME financial health diagnostics (cash & profitability)
+                    </div>
+                    <div class="hero-meta-item">
+                        <div class="hero-meta-dot"></div>
+                        CEO-level advisory – actionable, not theoretical
+                    </div>
+                </div>
+            </div>
+
+            <aside class="hero-right">
+                <h2 class="hero-right-title">Revenue Example</h2>
+                <p class="pricing-note">
+                    3 bank audits + 1 health check = ± £500/week
+                </p>
+                <div class="hero-highlight">
+                    <span>● <strong>ZC AUDITO™</strong> – £99/report</span>
+                    <span>● <strong>SME Health Check</strong> – from £199</span>
+                    <span>● 72h delivery – tailored to your case</span>
+                </div>
+                <div class="hero-contact">
+                    <p><strong>Contact</strong></p>
+                    <p>
+                        UK / WhatsApp: <span>+44 7350 735392</span><br />
+                        Tunisia: <span>+216 97 273 200</span><br />
+                        Email: <span>contact@zcinvest.com</span>
+                    </p>
+                </div>
+            </aside>
+        </section>
+
+        <!-- SERVICES -->
+
+        <section id="services">
+            <div class="section-label">Services</div>
+            <h2 class="section-title">
+                Two <span>high-impact</span> offers to protect your business
+            </h2>
+
+            <div class="services-grid">
+                <!-- ZC AUDITO -->
+                <div class="card">
+                    <div class="card-header-tag">Bank Fees Audit</div>
+                    <h3 class="card-title">ZC AUDITO™ – Banking Fees Audit</h3>
+                    <p class="card-subtitle">
+                        Identify, benchmark and optimize all your banking fees.
+                    </p>
+                    <p class="card-price">From £99 / month analysed</p>
+                    <ul class="card-list">
+                        <li><span class="card-list-bullet"></span>Automatic fee detection</li>
+                        <li><span class="card-list-bullet"></span>Comparison with BCT regulatory caps</li>
+                        <li><span class="card-list-bullet"></span>Executive savings report</li>
+                        <li><span class="card-list-bullet"></span>PDF report within 72h</li>
+                    </ul>
+                    <div class="card-actions">
+                        <a href="#contact" class="btn btn-primary">Request audit →</a>
+                    </div>
+                </div>
+
+                <!-- SME Health -->
+                <div class="card">
+                    <div class="card-header-tag">SME Financial Health</div>
+                    <h3 class="card-title">SME Health Check – 360° Review</h3>
+                    <p class="card-subtitle">
+                        Cash-flow, profitability & bank exposure analysis.
+                    </p>
+                    <p class="card-price">From £199 / mission</p>
+                    <ul class="card-list">
+                        <li><span class="card-list-bullet"></span>Quick financial scan</li>
+                        <li><span class="card-list-bullet"></span>Cash & margin diagnostics</li>
+                        <li><span class="card-list-bullet"></span>Financing scenario analysis</li>
+                        <li><span class="card-list-bullet"></span>Executive summary for management</li>
+                    </ul>
+                    <div class="card-actions">
+                        <a href="#contact" class="btn btn-primary">Book check →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+
+        <section id="contact">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">
+                Tell us about your case – response in <span>24h</span>
+            </h2>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <form onsubmit="alert('Thank you! We will get back to you shortly.'); return false;">
+                        <div class="form-row">
+                            <div>
+                                <label>Full name</label>
+                                <input type="text" required />
+                            </div>
+                            <div>
+                                <label>Company</label>
+                                <input type="text" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div>
+                                <label>Email</label>
+                                <input type="email" required />
+                            </div>
+                            <div>
+                                <label>WhatsApp / Phone</label>
+                                <input type="text" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div>
+                                <label>Service</label>
+                                <select required>
+                                    <option value="">Select…</option>
+                                    <option>ZC AUDITO™ – Bank Fees Audit</option>
+                                    <option>SME Financial Health Check</option>
+                                    <option>Both</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div>
+                                <label>Message</label>
+                                <textarea required></textarea>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary">Submit →</button>
+                    </form>
+                </div>
+
+                <div class="contact-card">
+                    <h3>Contact ZC INVEST LTD</h3>
+                    <p>Founder & CEO direct contact:</p>
+                    <p>
+                        UK / WhatsApp: <strong>+44 7350 735392</strong><br />
+                        Tunisia: <strong>+216 97 273 200</strong><br />
+                        Email: <strong>contact@zcinvest.com</strong>
+                    </p>
+                    <p class="contact-mini">
+                        Available Mon–Fri, 09:00–18:00 London/Tunis time.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>
+                <span>ZC INVEST LTD</span> – Registered in England & Wales. All rights reserved.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
